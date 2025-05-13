@@ -107,8 +107,9 @@ if __name__ == "__main__":
     def static_func(ctx, Q, K, V, Output):
         with dir.NameScope(only_capital=True):
             return self_attention(ctx, Q, K, V, Output, batch_size, num_heads, seq_len, model_k)
+            
     static_func(ctx, Q, K, V, Output)
     kernel = arch_lower(ctx)
-    dir.print_ir(kernel)
+    #dir.print_ir(kernel)
     kernel = arch_build(kernel, target="tileflow")
     print(kernel)
