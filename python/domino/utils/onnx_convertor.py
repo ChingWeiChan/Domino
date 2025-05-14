@@ -1327,7 +1327,7 @@ CONVERT_MAP = {
 
 
 class ONNXConvertor(object):
-    def __init__(self, path = None, inference=True):
+    def __init__(self, path=None, inference=True):
         self.path = path
         self.inference = inference
 
@@ -1346,7 +1346,7 @@ class ONNXConvertor(object):
         assert not self.has_tensor(name), f"Duplicated tensor {name}"
         self._tensors[name] = t
 
-    def parse(self, path = None):
+    def parse(self, path=None):
         if path is not None:
             self.path = path
         assert self.path is not None, "Can't parse None model path."
@@ -1386,6 +1386,7 @@ class ONNXConvertor(object):
         outputs = {}
         for info in graph.output:
             name, shape, dtype, shape_name = self.parse_info(info)
+
             t = self.get_tensor(name)
             outputs[name] = t
             assert t.shape == shape
@@ -1493,7 +1494,7 @@ class ONNXConvertor(object):
 
 
 if __name__ == "__main__":
-    path = "raw_mobilenetv2.onnx"
+    path = "simple_self_attention.onnx"
     convertor = ONNXConvertor(path, inference=True)
     graph = convertor.parse()
     print(graph)

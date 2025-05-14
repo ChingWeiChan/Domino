@@ -95,7 +95,6 @@ if __name__ == "__main__":
             gemm_exp_gemm_compute(ctx, tA, tB, tC, tD, tE, tF, *[M, N, K, L])
 
     i = 0
-    print(len(plans))
     for plan in plans[i:i+1]:
         plan.apply(tF, ctx)
         kernel = arch_lower(ctx)

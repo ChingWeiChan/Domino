@@ -99,7 +99,7 @@ if __name__ == "__main__":
             return [tA, tB, tE], [tF], loops
 
     space = get_space(static_gemm_exp_gemm, [M, N, K, L])
-
+    
     epoch = 10
     steps = 100
     results = []
